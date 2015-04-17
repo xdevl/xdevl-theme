@@ -1,0 +1,6 @@
+{
+  "name": "xdevl",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation"
+  }
+}
