@@ -27,12 +27,34 @@ module.exports = function(grunt) {
 				files: 'scss/**/*.scss',
 				tasks: ['sass']
 			}
+		},
+		concat: {
+			options: {
+				separator: ';'
+			},
+			script: {
+				src: [	'bower_components/foundation/js/foundation/foundation.js',
+						'bower_components/foundation/js/foundation/foundation.topbar.js',
+						'bower_components/foundation/js/foundation/foundation.orbit.js'
+					],
+				dest: 'js/script.js'
+			},
+		},
+		uglify: {
+			dist: {
+				files: {
+					'js/script.min.js':['js/script.js']
+				}
+			}
 		}
 	});
 	
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	
 	grunt.registerTask('build', ['sass']);
-	grunt.registerTask('default', ['build','watch']);
+	grunt.registerTask('buildJs', ['concat','uglify']) ;
+	grunt.registerTask('default', ['build','buildJs','watch']);
 }
