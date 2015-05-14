@@ -1,6 +1,10 @@
+			<?php wp_footer(); ?>
 			<div id="footer">
-			<h1>FOOTER</h1>
+				XdevL &#64; 2015 All rights Reserved.
 			</div>
-		</div>
+		</div> <!-- End wrapper -->
+		<script>
+			jQuery(document).foundation();
+		</script>
 	</body>
 </html>
