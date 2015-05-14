@@ -4,6 +4,13 @@
 $footer-height: 3rem ;
 $layout-spacing: 1rem ;
 
+@font-face {
+	font-family: 'Varela Round' ;
+	src:	url('../fonts/VarelaRound-Regular.woff2') format('woff2'),
+			url('../fonts/VarelaRound-Regular.woff') format('woff'),
+			url('../fonts/VarelaRound-Regular.ttf') format('truetype') ;
+}
+
 body
 {
 	min-height: 100% ;
