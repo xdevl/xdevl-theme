@@ -37,11 +37,15 @@ body
 }
 
 #main
-{
+{	
 	width: 100% ;
 	margin: auto ;
 	margin-bottom: $footer-height ;
 	display: table ;
+	
+	@media #{$medium-only} {max-width: 56em;}
+	@media #{$large-only} {max-width: 76em;}
+	@media #{$xlarge-up} {max-width: 104em;}
 }
 
 #content
