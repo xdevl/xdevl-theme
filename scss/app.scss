@@ -207,6 +207,13 @@ body
 		float: left ;
 		margin: 1em ;
 		max-height: 10rem ;
+		
+		@media #{$xsmall-only}
+		{
+			float: none ;
+			display: block ;
+			margin: 1em auto ;
+		}
 	}
 	
 	dd
