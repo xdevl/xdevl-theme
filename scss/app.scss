@@ -200,6 +200,7 @@ body
 .post-featured
 {
 	padding: 2rem ;
+	margin: 0 ;
 	
 	.wp-post-image
 	{
@@ -258,11 +259,17 @@ body
 #pagination
 {
 	text-align: center ;
+	
+	.button
+	{
+		margin: 2rem ;
+	}
 }
 
-#pagination .button
+#post-navigation a
 {
-	margin: 2rem ;
+	display: inline-block ;
+	margin: 1em ;
 }
 
 @media #{$xsmall-only}
