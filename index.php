@@ -16,7 +16,7 @@
 		<?php else: ?>
 			<?php if(is_home() && !is_paged()): ?>
 				<div class="orbit-wrapper">
-					<ul data-orbit>
+					<ul data-orbit data-options="pause_on_hover: false; slide_number: false;">
 						<?php for($count=0;$count<2 && have_posts();$count++): ?>
 							<li class="post-featured panel">
 								<?php the_post() ;
