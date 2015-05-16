@@ -154,7 +154,7 @@ $secondary-color: #e7e7e7;
 $xsmall-range: (0em, 32em);
 $small-range: (32.0625em, 40em);
 // $medium-range: (40.0625em, 64em);
-// $large-range: (64.0625em, 90em);
+$large-range: (64.0625em, 90em);
 // $xlarge-range: (90.0625em, 120em);
 // $xxlarge-range: (120.0625em, 99999999em);
 
@@ -1461,8 +1461,8 @@ $header-font-color: $primary-color;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+$topbar-breakpoint: #{lower-bound($large-range)}; // Change to 9999px for always mobile layout
+$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);

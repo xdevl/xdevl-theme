@@ -8,7 +8,7 @@
 	<body>
 		<div id="wrapper">
 			<div id="header" class="sticky">
-				<nav class="top-bar" data-topbar>
+				<nav class="top-bar" data-topbar role="navigation" data-options="scrolltop: false; sticky_on: large; mobile_show_parent_link: false">
 					<ul class="title-area">
 						<li class="name">
 							<a href="<?php echo esc_url(home_url('/')); ?>">XdevL</a>
@@ -17,9 +17,18 @@
 					</ul>
 					<section class="top-bar-section">
 						<ul class="right">
-							<li class="active"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+							<li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
 							<li><a href="#">About</a></li>
 							<li><a href="#">Contact</a></li>
+							<li class="has-dropdown hide-for-large-up">
+								<a href="#">Categories</a>
+								<ul class="dropdown">
+									<?php wp_list_categories(array('orderby'=>'name','style'=>'list','show_count'=>0,'hierarchical'=>false,'style'=>'list','title_li'=>'')); ?>
+								</ul>
+							</li>
+							<li class="has-form hide-for-large-up">
+								<?php get_search_form(); ?>
+							</li>
 						</ul>
 					</section>
 				</nav>

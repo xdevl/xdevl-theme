@@ -22,7 +22,6 @@ body
 
 #wrapper
 {
-	height: 100% ;
 	margin: 0 ;
 	padding: 0 ;
 }
@@ -109,7 +108,7 @@ body
 	
 }
 
-#searchform
+#sidebar .searchform
 {
 	margin: 1em ;
 	
@@ -121,6 +120,16 @@ body
 		background-position: 0.5em center ;
 		background-repeat: no-repeat ;
 	}
+}
+
+.top-bar-section #s
+{
+	padding-left: 2rem ;
+	color: white ;
+	background: url("../img/search-light.png") ;
+	background-size: 1rem 1rem ;
+	background-position: 0.5em center ;
+	background-repeat: no-repeat ;
 }
 
 .post-list
