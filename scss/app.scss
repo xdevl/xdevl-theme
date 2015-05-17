@@ -263,6 +263,24 @@ body
 	background-image: url("../img/comment.png") ;
 }
 
+pre
+{
+	background-color: rgba(0,0,0,0.01) ;
+	border: $panel-border-size solid $panel-border-color ;
+	margin-bottom: 1.25rem ;
+	padding: 0.8em ;
+	overflow: auto ;
+	white-space: pre-wrap ;
+	word-wrap: break-word ;
+}
+
+code
+{
+	background-color: transparent ;
+	border: none ;
+	font-family: Monaco, Consolas, Menlo, Inconsolata, monospace ;
+}
+
 #pagination
 {
 	text-align: center ;
