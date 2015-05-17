@@ -21,7 +21,13 @@ function xdevl_styles()
 	wp_enqueue_script('foundation-main') ;
 }
 
+function xdevl_admin_init()
+{
+	add_editor_style('css/editor.css') ;
+}
+
 add_action('wp_enqueue_scripts','xdevl_styles') ;
+add_action('admin_init','xdevl_admin_init') ;
 add_theme_support( 'post-thumbnails' ) ;
 add_filter('next_posts_link_attributes','posts_link_attributes') ;
 add_filter('previous_posts_link_attributes','posts_link_attributes') ;

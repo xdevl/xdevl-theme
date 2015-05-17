@@ -1,0 +1,29 @@
+@font-face {
+	font-family: 'Varela Round' ;
+	src:	url('../fonts/VarelaRound-Regular.woff2') format('woff2'),
+			url('../fonts/VarelaRound-Regular.woff') format('woff'),
+			url('../fonts/VarelaRound-Regular.ttf') format('truetype') ;
+}
+
+body
+{
+	font-family: "Valera Round", sans ;
+}
+
+pre
+{
+	background-color: rgba(0,0,0,0.01) ;
+	border: 1px solid #eaeaea ;
+	margin-bottom: 1.25rem ;
+	padding: 0.8em ;
+	overflow: auto ;
+	white-space: pre-wrap ;
+	word-wrap: break-word ;
+}
+
+code
+{
+	background-color: transparent ;
+	border: none ;
+	font-family: Monaco, Consolas, Menlo, Inconsolata, monospace ;
+}

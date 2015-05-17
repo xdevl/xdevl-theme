@@ -12,7 +12,8 @@ module.exports = function(grunt) {
 					sourceMap: false,
 				},
 				files: {
-				'css/style.css': 'scss/app.scss'
+				'css/style.css': 'scss/app.scss',
+				'css/editor.css': 'scss/editor.scss'
 				}
 			}
 		},
