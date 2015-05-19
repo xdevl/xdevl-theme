@@ -24,10 +24,58 @@ function xdevl_styles()
 function xdevl_admin_init()
 {
 	add_editor_style('css/editor.css') ;
+	register_setting('xdevl-theme-options','about_url') ;
+	register_setting('xdevl-theme-options','contact_url') ;
+}
+
+function xdevl_theme_menu()
+{
+	add_theme_page('Theme setup', 'XdevL theme', 'edit_theme_options', 'xdevl-theme', 'xdevl_theme_page') ;
+}
+
+function echo_top_bar_nav_item($title, $url)
+{
+	if(strpos($url,'http://')===false)
+		$url=get_site_url(0,$url) ;
+
+	$class=strcmp('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],$url)===0?'class="active"':'' ;
+	
+	$url=esc_url($url) ;
+	$title=esc_html($title) ;
+	echo "<li $class><a href=\"$url\">$title</a></li>" ;
+}
+
+function xdevl_theme_page()
+{
+	?>
+	<div class="wrap">
+		<h2>XdevL theme setup</h2>
+		<form method="post" action="options.php">
+			<?php settings_fields('xdevl-theme-options');
+				do_settings_sections('xdevl-theme-options'); ?>
+				
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row"><label for="about_url">About url:</label></th>
+							<td><?php echo esc_url(get_site_url(0,'/')) ?><input type="text" name="about_url" class="regular-text" value="<?php echo esc_attr(get_option('about_url')) ?>" /></td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="contact_url">Contact url:</label></th>
+							<td><?php echo esc_url(get_site_url(0,'/')) ?><input type="text" name="contact_url" class="regular-text" value="<?php echo esc_attr(get_option('contact_url')) ?>" /></td>
+						</tr>
+					</tbody>
+				</table>
+			
+			<?php submit_button(); ?>
+		</form>
+	</div>
+	<?php
 }
 
 add_action('wp_enqueue_scripts','xdevl_styles') ;
 add_action('admin_init','xdevl_admin_init') ;
+add_action('admin_menu','xdevl_theme_menu') ;
 add_theme_support( 'post-thumbnails' ) ;
 add_filter('next_posts_link_attributes','posts_link_attributes') ;
 add_filter('previous_posts_link_attributes','posts_link_attributes') ;

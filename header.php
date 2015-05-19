@@ -17,9 +17,9 @@
 					</ul>
 					<section class="top-bar-section">
 						<ul class="right">
-							<li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
+							<?php 	echo_top_bar_nav_item('Home',home_url('/')) ;
+									echo_top_bar_nav_item('About',get_option('about_url')) ;
+									echo_top_bar_nav_item('Contact',get_option('contact_url')) ; ?>
 							<li class="has-dropdown hide-for-large-up">
 								<a href="#">Categories</a>
 								<ul class="dropdown">
