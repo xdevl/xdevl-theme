@@ -4,7 +4,7 @@
 	<div id="content">
 		<?php if(!have_posts()):
 			get_template_part('post','none') ;
-		elseif(is_single()): ?>
+		elseif(is_single() || is_page()): ?>
 			<div class="post-featured panel">
 				<?php the_post() ;
 				get_template_part('post') ; ?>
