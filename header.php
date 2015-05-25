@@ -5,6 +5,16 @@
 		<title><?php bloginfo('name'); ?></title>
 		<?php wp_head(); ?>
 	</head>
+	
+	<?php if(!is_browser_compatible()): ?>
+		<body style="text-align: center; margin: 6em 2em;">
+			<h1>Sorry, the version of your browser is not compatible with this website...</h1>
+			<h3>Upgrade your browser first, we require at least internet explorer 9</h3>
+			XdevL &#64; 2015 All rights Reserved.
+		</body>
+	</html>
+	<?php exit();endif; ?>
+	
 	<body>
 		<div id="wrapper">
 			<div id="header" class="sticky">
