@@ -12,4 +12,7 @@
 <?php endif; ?>
 <?php $thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID())); ?>
 <a href="<?php the_permalink(); ?>" rel="bookmark"><img src="<?php echo $thumbnail['0']; ?>" class="wp-post-image" /></a>
-<?php the_content(__('Read more...')); ?>
+<?php
+	the_content(__('Read more...')) ;
+	comments_template() ;
+?>
