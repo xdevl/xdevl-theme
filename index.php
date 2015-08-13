@@ -10,8 +10,8 @@
 				get_template_part('post') ; ?>
 			</div>
 			<div id="post-navigation">
-				<?php previous_post_link('%link','&laquo; previous post') ;
-				next_post_link('%link','next post &raquo;'); ?>
+				<?php next_post_link('%link','&laquo; next post') ;
+					previous_post_link('%link','previous post &raquo;'); ?>
 			</div>
 		<?php else: ?>
 			<?php if(is_home() && !is_paged()): ?>
