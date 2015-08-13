@@ -42,6 +42,7 @@ body
 	margin: auto ;
 	margin-bottom: $footer-height ;
 	display: table ;
+	table-layout: fixed ;
 	
 	@media #{$medium-only} {max-width: 56em;}
 	@media #{$large-only} {max-width: 76em;}
