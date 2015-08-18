@@ -78,11 +78,19 @@ function xdevl_theme_page()
 	<?php
 }
 
+function filter_title($title)
+{
+	if(empty($title) && (is_home() || is_front_Page()))
+		return bloginfo('name') ;
+	else return $title ;
+}
+
 add_action('wp_enqueue_scripts','xdevl_styles') ;
 add_action('admin_init','xdevl_admin_init') ;
 add_action('admin_menu','xdevl_theme_menu') ;
 add_theme_support( 'post-thumbnails' ) ;
 add_filter('next_posts_link_attributes','posts_link_attributes') ;
 add_filter('previous_posts_link_attributes','posts_link_attributes') ;
+add_filter('wp_title','filter_title') ;
 
 ?>
