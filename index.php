@@ -5,10 +5,8 @@
 		<?php if(!have_posts()):
 			get_template_part('post','none') ;
 		elseif(is_single() || is_page()): ?>
-			<div class="post-featured panel">
-				<?php the_post() ;
-				get_template_part('post') ; ?>
-			</div>
+			<?php the_post() ;
+			get_template_part('post') ; ?>
 			<div id="post-navigation">
 				<?php next_post_link('%link','&laquo; next post') ;
 					previous_post_link('%link','previous post &raquo;'); ?>
@@ -18,10 +16,8 @@
 				<div class="orbit-wrapper">
 					<ul data-orbit data-options="pause_on_hover: false; slide_number: false;">
 						<?php for($count=0;$count<3 && have_posts();++$count): ?>
-							<li class="post-featured panel">
-								<?php the_post() ;
-								get_template_part('post') ;?>
-							</li>
+							<?php the_post() ;
+							get_template_part('post') ;?>
 						<?php endfor; ?>
 					</ul>
 				</div>

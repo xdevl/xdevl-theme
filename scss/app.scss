@@ -310,3 +310,56 @@ code
 		display: block ;
 	}
 }
+
+.post-comments
+{
+	margin-top: 1rem ;
+
+	ol.comment-list
+	{
+		margin-bottom: 0 ;
+	}
+
+	.comment-body
+	{
+		padding-top: 2rem ;
+		padding-bottom: 2rem ;
+		border-top: 1px solid $panel-border-color ;
+	}
+
+	li.comment
+	{
+		list-style: none ;
+		
+		.avatar
+		{
+			float: left ;
+			margin-right: 1rem ;
+			border-radius: 50% ;
+		}
+		
+		.vcard
+		{
+			display: block ;
+			border: none ;
+			margin: 0 ;
+			padding: 0 ;
+		}
+		
+		.says
+		{
+			display: none ;
+		}
+		
+		.comment-meta
+		{
+			margin-bottom: 2rem ;
+		}
+	}
+
+	.comment-navigation
+	{
+		margin-bottom: 2rem ;
+	}
+}
+

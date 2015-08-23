@@ -1,3 +1,4 @@
+<div class="post-featured panel">
 <h2>
 	<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 </h2>
@@ -14,5 +15,11 @@
 <a href="<?php the_permalink(); ?>" rel="bookmark"><img src="<?php echo $thumbnail['0']; ?>" class="wp-post-image" /></a>
 <?php
 	the_content(__('Read more...')) ;
-	comments_template() ;
 ?>
+</div>
+
+<?php if(is_single()): ?>
+	<div class="panel post-comments">
+		<?php comments_template() ; ?>
+	</div>
+<?php endif; ?>
