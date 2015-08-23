@@ -34,7 +34,7 @@
 						<div class="post-preview panel">
 							<?php get_template_part('post','preview'); ?>
 						</div>
-						<?php if(more_posts()): the_post(); ?>
+						<?php if(xdevl\theme\more_posts()): the_post(); ?>
 							<div class="post-preview panel">
 								<?php get_template_part('post','preview'); ?>
 							</div>

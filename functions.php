@@ -1,5 +1,12 @@
 <?php
 
+namespace xdevl\theme
+{
+
+defined('ABSPATH') or die('No script kiddies please!') ;
+
+define(__NAMESPACE__.'\PLUGIN_NAMESPACE','xdevl_theme') ;
+
 function is_browser_compatible()
 {
 	return !preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT']) ;
@@ -16,7 +23,7 @@ function posts_link_attributes()
 	return 'class="button small"' ;
 }
 
-function xdevl_styles()
+function wp_enqueue_scripts()
 {	
 	wp_register_style('xdevl-style',get_template_directory_uri().'/css/style.css',array(),false,'all') ;
 	wp_enqueue_style('xdevl-style') ;
@@ -26,14 +33,14 @@ function xdevl_styles()
 	wp_enqueue_script('foundation-main') ;
 }
 
-function xdevl_admin_init()
+function admin_init()
 {
 	add_editor_style('css/editor.css') ;
 	register_setting('xdevl-theme-options','about_url') ;
 	register_setting('xdevl-theme-options','contact_url') ;
 }
 
-function xdevl_theme_menu()
+function admin_menu()
 {
 	add_theme_page('Theme setup', 'XdevL theme', 'edit_theme_options', 'xdevl-theme', 'xdevl_theme_page') ;
 }
@@ -78,19 +85,21 @@ function xdevl_theme_page()
 	<?php
 }
 
-function filter_title($title)
+function wp_title($title)
 {
 	if(empty($title) && (is_home() || is_front_Page()))
 		return bloginfo('name') ;
 	else return $title ;
 }
 
-add_action('wp_enqueue_scripts','xdevl_styles') ;
-add_action('admin_init','xdevl_admin_init') ;
-add_action('admin_menu','xdevl_theme_menu') ;
+add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
+add_action('admin_init',__NAMESPACE__.'\admin_init') ;
+add_action('admin_menu',__NAMESPACE__.'\admin_menu') ;
 add_theme_support( 'post-thumbnails' ) ;
-add_filter('next_posts_link_attributes','posts_link_attributes') ;
-add_filter('previous_posts_link_attributes','posts_link_attributes') ;
-add_filter('wp_title','filter_title') ;
+add_filter('next_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
+add_filter('previous_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
+add_filter('wp_title',__NAMESPACE__.'\wp_title') ;
+
+} //end xdevl\theme
 
 ?>
