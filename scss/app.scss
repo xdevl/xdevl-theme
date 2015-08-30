@@ -90,20 +90,10 @@ body
 		vertical-align: top ;
 	}
 	
-	.panel
+	.titled-panel
 	{
 		position: fixed ;
 		width: 20rem ;
-		padding: 0 ;
-		
-		h2
-		{
-			font-size: 1.6rem ;
-			background-color: $primary-color ;
-			margin: 0 ;
-			padding: 1rem 1.6rem ;
-			color: $panel-bg ;
-		}
 	}
 	
 	.side-nav li
@@ -135,6 +125,21 @@ body
 	background-size: 1rem 1rem ;
 	background-position: 0.5em center ;
 	background-repeat: no-repeat ;
+}
+
+.titled-panel
+{
+	@extend .panel ;
+	padding: 0 ;
+	
+	h2.title
+	{
+		font-size: 1.6rem ;
+		background-color: $primary-color ;
+		margin: 0 ;
+		padding: 1rem 1.6rem ;
+		color: $panel-bg ;
+	}
 }
 
 .post-list
