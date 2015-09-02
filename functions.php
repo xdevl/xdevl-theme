@@ -7,6 +7,9 @@ defined('ABSPATH') or die('No script kiddies please!') ;
 
 define(__NAMESPACE__.'\PLUGIN_NAMESPACE','xdevl_theme') ;
 
+// Url params
+define(__NAMESPACE__.'\URL_PARAM_LOGIN',PLUGIN_NAMESPACE.'_login') ;
+
 function is_browser_compatible()
 {
 	return !preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT']) ;
@@ -92,6 +95,54 @@ function wp_title($title)
 	else return $title ;
 }
 
+function login_form_top()
+{
+	global $login_error ;
+	if(!empty($login_error))
+		echo '<div class="alert-box alert">'.$login_error.'</div>' ;
+}
+
+function login_form()
+{
+	global $hook_site_url ;
+	$hook_site_url=true ;
+	echo wp_login_form() ;
+	$hook_site_url=false ;
+}
+
+function site_url($url, $path, $orig_scheme, $blog_id)
+{
+	global $hook_site_url ;
+	if($hook_site_url && $path=='wp-login.php')
+		// TODO: add support for https
+		return add_query_arg(URL_PARAM_LOGIN,true,get_permalink()) ;
+	else return $url ;
+}
+
+function query_vars($vars)
+{
+	$vars[]=URL_PARAM_LOGIN ;
+	return $vars ;
+}
+
+function display_login_modal()
+{
+	return !is_user_logged_in() && get_query_var(URL_PARAM_LOGIN,false) ;
+}
+
+function wp_loaded()
+{
+	global $login_error ;
+	if(!is_user_logged_in())
+	{
+		$user=wp_signon() ;
+		if(!is_wp_error($user))
+			wp_set_current_user($user->ID) ;
+		else $login_error=$user->get_error_message() ;
+	}
+}
+
+
 add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
 add_action('admin_init',__NAMESPACE__.'\admin_init') ;
 add_action('admin_menu',__NAMESPACE__.'\admin_menu') ;
@@ -99,6 +150,10 @@ add_theme_support( 'post-thumbnails' ) ;
 add_filter('next_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
 add_filter('previous_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
 add_filter('wp_title',__NAMESPACE__.'\wp_title') ;
+add_filter('login_form_top',__NAMESPACE__.'\login_form_top') ;
+add_filter('query_vars',__NAMESPACE__.'\query_vars') ;
+add_filter('site_url',__NAMESPACE__.'\site_url',10,4) ;
+add_filter('wp_loaded',__NAMESPACE__.'\wp_loaded') ;
 
 } //end xdevl\theme
 

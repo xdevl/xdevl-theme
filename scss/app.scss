@@ -140,12 +140,18 @@ body
 		padding: 1rem 1.6rem ;
 		color: $panel-bg ;
 	}
+	
+	.panel-content
+	{
+		margin: 2rem ;
+	}
 }
 
-input.submit
+input.submit, input.button-primary
 {
 	@extend .button ;
 	@extend .small ;
+	margin-bottom: 0 ;
 }
 
 .post-list
@@ -322,9 +328,19 @@ code
 	}
 }
 
+.login-modal
+{
+	max-width: 400px ;
+	
+	.close-reveal-modal
+	{
+		color: $panel-bg ;
+	}
+}
+
 .post-comments
 {
-	margin-top: 1rem ;
+	margin-top: $layout-spacing ;
 
 	ol.comment-list
 	{

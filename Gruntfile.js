@@ -36,7 +36,8 @@ module.exports = function(grunt) {
 			script: {
 				src: [	'bower_components/foundation/js/foundation/foundation.js',
 						'bower_components/foundation/js/foundation/foundation.topbar.js',
-						'bower_components/foundation/js/foundation/foundation.orbit.js'
+						'bower_components/foundation/js/foundation/foundation.orbit.js',
+						'bower_components/foundation/js/foundation/foundation.reveal.js'
 					],
 				dest: 'js/script.js'
 			},

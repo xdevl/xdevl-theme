@@ -16,6 +16,15 @@
 	<?php exit();endif; ?>
 	
 	<body>
+		
+		<div id="loginModal" class="titled-panel reveal-modal login-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+			<h2 class="title">Login</h2>
+			<div class="panel-content">
+				<?php xdevl\theme\login_form(); ?>
+			</div>
+		</div>
+		
 		<div id="wrapper">
 			<div id="header" class="sticky">
 				<nav class="top-bar" data-topbar role="navigation" data-options="scrolltop: false; sticky_on: large; mobile_show_parent_link: false">
