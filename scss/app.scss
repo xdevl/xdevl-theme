@@ -349,9 +349,9 @@ code
 
 	.comment-body
 	{
-		padding-top: 2rem ;
+		margin-bottom: 2rem ;
 		padding-bottom: 2rem ;
-		border-top: 1px solid $panel-border-color ;
+		border-bottom: 1px solid $panel-border-color ;
 	}
 
 	li.comment
@@ -387,6 +387,11 @@ code
 	.comment-navigation
 	{
 		margin-bottom: 2rem ;
+	}
+	
+	.comment-reply-title
+	{
+		margin-bottom: 1rem ;
 	}
 }
 

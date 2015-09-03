@@ -19,7 +19,5 @@
 </div>
 
 <?php if(is_single()): ?>
-	<div class="panel post-comments">
-		<?php comments_template() ; ?>
-	</div>
+	<?php comments_template() ; ?>
 <?php endif; ?>
