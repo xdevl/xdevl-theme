@@ -7,10 +7,6 @@
 		elseif(is_single() || is_page()): ?>
 			<?php the_post() ;
 			get_template_part('post') ; ?>
-			<div id="post-navigation">
-				<?php next_post_link('%link','&laquo; next post') ;
-					previous_post_link('%link','previous post &raquo;'); ?>
-			</div>
 		<?php else: ?>
 			<?php if(is_home() && !is_paged()): ?>
 				<div class="orbit-wrapper">
