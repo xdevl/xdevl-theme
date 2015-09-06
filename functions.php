@@ -95,7 +95,7 @@ function xdevl_theme_page()
 function wp_title($title)
 {
 	if(empty($title) && (is_home() || is_front_Page()))
-		return bloginfo('name') ;
+		return get_bloginfo('name').' - '.get_bloginfo('description') ;
 	else return $title ;
 }
 
