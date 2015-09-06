@@ -44,7 +44,9 @@ if ( post_password_required() )
 
 		<?php endif; // have_comments() ?>
 
-		<?php comment_form(); ?>
+		<?php if(!xdevl\theme\is_comment_reply()): ?>
+			<?php comment_form(); ?>
+		<?php endif; ?>
 	</div>
 
 </div><!-- #comments -->

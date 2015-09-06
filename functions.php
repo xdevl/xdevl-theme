@@ -34,6 +34,10 @@ function wp_enqueue_scripts()
 	wp_register_script('foundation-main',get_template_directory_uri().'/js/script.js',true) ;
 	wp_enqueue_script('jquery') ;
 	wp_enqueue_script('foundation-main') ;
+	
+	// Standard Wordpress javascript file to include in order to move the comment form without having to reload the page
+	//if(is_singular() && comments_open() && get_option('thread_comments'))
+		//wp_enqueue_script('comment-reply') ;
 }
 
 function admin_init()
@@ -142,6 +146,33 @@ function wp_loaded()
 	}
 }
 
+function comment_reply_link($link, $args, $comment, $post)
+{
+	global $comment_reply ;
+	if(isset($_GET['replytocom']) && $_GET['replytocom']==$comment->comment_ID)
+	{
+		$comment_reply=true ;
+		comment_form() ;
+		return "" ;
+	}
+	else
+	{
+		$onclick=sprintf('return addComment.moveForm( "%1$s-%2$s", "%2$s", "%3$s", "%4$s" )',
+				$args['add_below'],$comment->comment_ID,$args['respond_id'],$post->ID) ;
+		
+		return sprintf( "<a class='comment-reply-link' href='%s' onclick='%s' aria-label='%s'>%s</a>",
+				esc_url(add_query_arg('replytocom',$comment->comment_ID))."#comment-".$comment->comment_ID,
+				$onclick,
+				esc_attr(sprintf( $args['reply_to_text'],$comment->comment_author)),
+				$args['reply_text']) ;
+	}
+}
+
+function is_comment_reply()
+{
+	global $comment_reply ;
+	return $comment_reply ;
+}
 
 add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
 add_action('admin_init',__NAMESPACE__.'\admin_init') ;
@@ -154,6 +185,7 @@ add_filter('login_form_top',__NAMESPACE__.'\login_form_top') ;
 add_filter('query_vars',__NAMESPACE__.'\query_vars') ;
 add_filter('site_url',__NAMESPACE__.'\site_url',10,4) ;
 add_filter('wp_loaded',__NAMESPACE__.'\wp_loaded') ;
+add_filter('comment_reply_link',__NAMESPACE__.'\comment_reply_link',10,4) ;
 
 } //end xdevl\theme
 

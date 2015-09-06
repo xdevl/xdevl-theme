@@ -393,5 +393,20 @@ code
 	{
 		margin-bottom: 1rem ;
 	}
+	
+	.comment-reply-link::before
+	{
+		content: "\21b3" ;
+		margin-right: 0.2em ;
+	}
+}
+
+#cancel-comment-reply-link
+{
+	font-style: italic ;
+	&:before
+	{
+		content: " - " ;
+	}
 }
 
