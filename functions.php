@@ -49,7 +49,7 @@ function admin_init()
 
 function admin_menu()
 {
-	add_theme_page('Theme setup', 'XdevL theme', 'edit_theme_options', 'xdevl-theme', 'xdevl_theme_page') ;
+	add_theme_page('Theme setup', 'XdevL theme', 'edit_theme_options', 'xdevl-theme', __NAMESPACE__.'\xdevl_theme_page') ;
 }
 
 function echo_top_bar_nav_item($title, $url)
