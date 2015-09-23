@@ -17,10 +17,12 @@
 <?php
 	the_content(__('Read more...')) ;
 ?>
+<?php if(is_single()): ?>
 	<div id="post-navigation">
 		<?php next_post_link('%link','&laquo; next post') ;
 			previous_post_link('%link','previous post &raquo;'); ?>
 	</div>
+<?php endif; ?>
 </div>
 
 <?php if(is_single()): ?>
