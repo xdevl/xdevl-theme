@@ -223,8 +223,9 @@ input.submit, input.button-primary
 	.wp-post-image
 	{
 		float: left ;
-		margin: 1em ;
+		padding: 0 2rem 1rem 0 ;
 		max-height: 10rem ;
+		background-color: $panel-bg ;
 		
 		@media #{$xsmall-only}
 		{
@@ -232,6 +233,13 @@ input.submit, input.button-primary
 			display: block ;
 			margin: 1em auto ;
 		}
+	}
+	
+	h2
+	{
+		padding: 1rem ;
+		border-bottom: 1px solid #dddddd ;
+		margin-bottom: 1rem !important ;
 	}
 	
 	dd
@@ -409,4 +417,3 @@ code
 		content: " - " ;
 	}
 }
-
