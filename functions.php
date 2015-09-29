@@ -10,6 +10,13 @@ define(__NAMESPACE__.'\PLUGIN_NAMESPACE','xdevl_theme') ;
 // Url params
 define(__NAMESPACE__.'\URL_PARAM_LOGIN',PLUGIN_NAMESPACE.'_login') ;
 
+class Data
+{
+	public static $login_error=null ;
+	public static $hook_site_url=false ;
+	public static $comment_reply=null ;
+}
+
 function is_browser_compatible()
 {
 	return !preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT']) ;
@@ -101,23 +108,20 @@ function wp_title($title)
 
 function login_form_top()
 {
-	global $login_error ;
-	if(!empty($login_error))
-		echo '<div class="alert-box alert">'.$login_error.'</div>' ;
+	if(!empty(Data::$login_error))
+		echo '<div class="alert-box alert">'.Data::$login_error.'</div>' ;
 }
 
 function login_form()
 {
-	global $hook_site_url ;
-	$hook_site_url=true ;
+	Data::$hook_site_url=true ;
 	echo wp_login_form() ;
-	$hook_site_url=false ;
+	Data::$hook_site_url=false ;
 }
 
 function site_url($url, $path, $orig_scheme, $blog_id)
 {
-	global $hook_site_url ;
-	if($hook_site_url && $path=='wp-login.php')
+	if(Data::$hook_site_url && $path=='wp-login.php')
 		// TODO: add support for https
 		return add_query_arg(URL_PARAM_LOGIN,true,get_permalink()) ;
 	else return $url ;
@@ -136,23 +140,21 @@ function display_login_modal()
 
 function wp_loaded()
 {
-	global $login_error ;
 	// get_query_var can't be used here
 	if(isset($_GET[URL_PARAM_LOGIN]) && !is_user_logged_in())
 	{
 		$user=wp_signon() ;
 		if(!is_wp_error($user))
 			wp_set_current_user($user->ID) ;
-		else $login_error=$user->get_error_message() ;
+		else Data::$login_error=$user->get_error_message() ;
 	}
 }
 
 function comment_reply_link($link, $args, $comment, $post)
 {
-	global $comment_reply ;
 	if(isset($_GET['replytocom']) && $_GET['replytocom']==$comment->comment_ID)
 	{
-		$comment_reply=true ;
+		Data::$comment_reply=true ;
 		comment_form() ;
 		return "" ;
 	}
@@ -171,8 +173,7 @@ function comment_reply_link($link, $args, $comment, $post)
 
 function is_comment_reply()
 {
-	global $comment_reply ;
-	return $comment_reply ;
+	return Data::$comment_reply ;
 }
 
 add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
