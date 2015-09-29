@@ -137,7 +137,8 @@ function display_login_modal()
 function wp_loaded()
 {
 	global $login_error ;
-	if(!is_user_logged_in())
+	// get_query_var can't be used here
+	if(isset($_GET[URL_PARAM_LOGIN]) && !is_user_logged_in())
 	{
 		$user=wp_signon() ;
 		if(!is_wp_error($user))
