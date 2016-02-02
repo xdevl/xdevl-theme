@@ -336,6 +336,32 @@ code
 	}
 }
 
+img
+{
+	max-width: 100% ;
+}
+
+.wp-caption
+{
+	margin: 1em ;
+	
+	.wp-caption-text
+	{
+		display: inline-block ;
+		color: grey ;
+		font-style: italic ;
+		font-size: 1.2em ;
+		margin: 1em ;
+		padding-left: 1em ;
+		border-left: solid 2px grey ;
+	}
+}
+
+.gallery img
+{
+	border: none !important ;
+}
+
 .login-modal
 {
 	max-width: 400px ;
