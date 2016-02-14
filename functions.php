@@ -106,23 +106,6 @@ function wp_title($title)
 	else return $title ;
 }
 
-function img_caption_shortcode($empty, $attr, $content)
-{
-	$attr=shortcode_atts(array('id'=> '','align'=>'alignnone','width'=>'','caption'=>''),$attr) ;
-
-	if(1>(int)$attr['width'] || empty($attr['caption']))
-		return '' ;
-
-	if($attr['id'])
-		$attr['id']='id="'.esc_attr($attr['id']).'" ' ;
-
-	return '<div '.$attr['id']
-	.'class="wp-caption '.esc_attr($attr['align']).'">'
-	.do_shortcode( $content )
-	.'<p class="wp-caption-text">'.$attr['caption'].'</p>'
-	.'</div>' ;
-}
-
 function login_form_top()
 {
 	if(!empty(Data::$login_error))
@@ -200,7 +183,6 @@ add_theme_support( 'post-thumbnails' ) ;
 add_filter('next_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
 add_filter('previous_posts_link_attributes',__NAMESPACE__.'\posts_link_attributes') ;
 add_filter('wp_title',__NAMESPACE__.'\wp_title') ;
-add_filter('img_caption_shortcode',__NAMESPACE__.'\img_caption_shortcode',10,3) ;
 add_filter('login_form_top',__NAMESPACE__.'\login_form_top') ;
 add_filter('query_vars',__NAMESPACE__.'\query_vars') ;
 add_filter('site_url',__NAMESPACE__.'\site_url',10,4) ;
