@@ -30,15 +30,15 @@
 				<nav class="top-bar" data-topbar role="navigation" data-options="scrolltop: false; sticky_on: large; mobile_show_parent_link: false">
 					<ul class="title-area">
 						<li class="name">
-							<a href="<?php echo esc_url(home_url('/')); ?>">XdevL</a>
+							<a href="<?php echo esc_url(home_url('/')); ?>"><img id="logo" src="<?php echo xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_LOGO_URL); ?>" /></a>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</li>
 					</ul>
 					<section class="top-bar-section">
 						<ul class="right">
 							<?php 	xdevl\theme\echo_top_bar_nav_item('Home',home_url('/')) ;
-									xdevl\theme\echo_top_bar_nav_item('About',get_option(xdevl\theme\THEME_SETTINGS_ABOUT_URL)) ;
-									xdevl\theme\echo_top_bar_nav_item('Contact',get_option(xdevl\theme\THEME_SETTINGS_CONTACT_URL)) ; ?>
+									xdevl\theme\echo_top_bar_nav_item('About',xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_ABOUT_URL)) ;
+									xdevl\theme\echo_top_bar_nav_item('Contact',xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_CONTACT_URL)) ; ?>
 							<li class="has-dropdown hide-for-large-up">
 								<a href="#">Categories</a>
 								<ul class="dropdown">
