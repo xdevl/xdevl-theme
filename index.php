@@ -11,7 +11,7 @@
 			<?php if(is_home() && !is_paged()): ?>
 				<div class="orbit-wrapper">
 					<ul data-orbit data-options="pause_on_hover: false; slide_number: false;">
-						<?php for($count=0;$count<3 && have_posts();++$count): ?>
+						<?php for($count=0;$count<2 && have_posts();++$count): ?>
 							<?php the_post() ;
 							get_template_part('post') ;?>
 						<?php endfor; ?>
@@ -25,7 +25,7 @@
 				<h1><?php echo get_category(get_query_var('cat'))->name ?> posts</h1>
 			<?php endif; ?>
 			<div class="post-list">
-				<?php if(!isset($count) || $count>=3): while(have_posts()): the_post(); ?>
+				<?php if(!isset($count) || $count>=2): while(have_posts()): the_post(); ?>
 					<div class="post-row">
 						<div class="post-preview panel">
 							<?php get_template_part('post','preview'); ?>
