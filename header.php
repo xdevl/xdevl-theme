@@ -37,8 +37,8 @@
 					<section class="top-bar-section">
 						<ul class="right">
 							<?php 	xdevl\theme\echo_top_bar_nav_item('Home',home_url('/')) ;
-									xdevl\theme\echo_top_bar_nav_item('About',get_option('about_url')) ;
-									xdevl\theme\echo_top_bar_nav_item('Contact',get_option('contact_url')) ; ?>
+									xdevl\theme\echo_top_bar_nav_item('About',get_option(xdevl\theme\THEME_SETTINGS_ABOUT_URL)) ;
+									xdevl\theme\echo_top_bar_nav_item('Contact',get_option(xdevl\theme\THEME_SETTINGS_CONTACT_URL)) ; ?>
 							<li class="has-dropdown hide-for-large-up">
 								<a href="#">Categories</a>
 								<ul class="dropdown">

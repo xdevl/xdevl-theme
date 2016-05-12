@@ -7,6 +7,11 @@ defined('ABSPATH') or die('No script kiddies please!') ;
 
 define(__NAMESPACE__.'\PLUGIN_NAMESPACE','xdevl_theme') ;
 
+// Theme settings
+define(__NAMESPACE__.'\THEME_SETTINGS',PLUGIN_NAMESPACE) ;
+define(__NAMESPACE__.'\THEME_SETTINGS_ABOUT_URL',PLUGIN_NAMESPACE.'_about_url') ;
+define(__NAMESPACE__.'\THEME_SETTINGS_CONTACT_URL',PLUGIN_NAMESPACE.'_contact_url') ;
+
 // Url params
 define(__NAMESPACE__.'\URL_PARAM_LOGIN',PLUGIN_NAMESPACE.'_login') ;
 
@@ -50,13 +55,24 @@ function wp_enqueue_scripts()
 function admin_init()
 {
 	add_editor_style('css/editor.css') ;
-	register_setting('xdevl-theme-options','about_url') ;
-	register_setting('xdevl-theme-options','contact_url') ;
+	register_setting(THEME_SETTINGS,THEME_SETTINGS_ABOUT_URL) ;
+	register_setting(THEME_SETTINGS,THEME_SETTINGS_CONTACT_URL) ;
+	
+	add_settings_section(THEME_SETTINGS,null,null,THEME_SETTINGS) ;
+	add_settings_field(THEME_SETTINGS_ABOUT_URL,'About url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_ABOUT_URL) ;
+	add_settings_field(THEME_SETTINGS_CONTACT_URL,'Contact url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_CONTACT_URL) ;
 }
 
 function admin_menu()
 {
-	add_theme_page('Theme setup', 'XdevL theme', 'edit_theme_options', 'xdevl-theme', __NAMESPACE__.'\xdevl_theme_page') ;
+	add_theme_page('Theme setup','XdevL theme','edit_theme_options',THEME_SETTINGS, __NAMESPACE__.'\xdevl_theme_page') ;
+}
+
+function url_input_callback($option)
+{
+	
+	$value=esc_attr(get_option($option)) ;
+	echo esc_url(get_site_url(0,'/'))."<input id=\"$option\" name=\"$option\" type=\"text\" value=\"$value\" />" ;
 }
 
 function echo_top_bar_nav_item($title, $url)
@@ -75,25 +91,11 @@ function xdevl_theme_page()
 {
 	?>
 	<div class="wrap">
-		<h2>XdevL theme setup</h2>
+		<h1>XdevL theme setup</h1>
 		<form method="post" action="options.php">
-			<?php settings_fields('xdevl-theme-options');
-				do_settings_sections('xdevl-theme-options'); ?>
-				
-				<table class="form-table">
-					<tbody>
-						<tr>
-							<th scope="row"><label for="about_url">About url:</label></th>
-							<td><?php echo esc_url(get_site_url(0,'/')) ?><input type="text" name="about_url" class="regular-text" value="<?php echo esc_attr(get_option('about_url')) ?>" /></td>
-						</tr>
-						<tr>
-							<th scope="row"><label for="contact_url">Contact url:</label></th>
-							<td><?php echo esc_url(get_site_url(0,'/')) ?><input type="text" name="contact_url" class="regular-text" value="<?php echo esc_attr(get_option('contact_url')) ?>" /></td>
-						</tr>
-					</tbody>
-				</table>
-			
-			<?php submit_button(); ?>
+			<?php settings_fields(THEME_SETTINGS);
+				do_settings_sections(THEME_SETTINGS);
+				submit_button();  ?>
 		</form>
 	</div>
 	<?php
