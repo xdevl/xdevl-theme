@@ -58,6 +58,11 @@ body
 		margin: $layout-spacing ;
 		@media #{$xsmall-only} {margin: 0.5rem;}
 	}
+	
+	h2
+	{
+		margin-top: 2rem ;
+	}
 }
 
 #footer
@@ -235,7 +240,7 @@ input.submit, input.button-primary
 		}
 	}
 	
-	h2
+	h1
 	{
 		padding: 1rem ;
 		border-bottom: 1px solid #dddddd ;

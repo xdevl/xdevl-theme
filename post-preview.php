@@ -1,6 +1,6 @@
-<h3>
+<h2>
 	<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-</h3>
+</h2>
 <hr />
 <?php $thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()));?>
 <div class="wrapper">

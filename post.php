@@ -1,9 +1,9 @@
 <div class="post-featured panel">
 <?php $thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID())); ?>
 <a href="<?php the_permalink(); ?>" rel="bookmark"><img src="<?php echo $thumbnail['0']; ?>" class="wp-post-image" /></a>
-<h2 class="post-title">
+<h1 class="post-title">
 	<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-</h2>
+</h1>
 
 <?php if(!is_page()): ?>
 	<dl>
