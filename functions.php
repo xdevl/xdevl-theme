@@ -25,6 +25,7 @@ define(__NAMESPACE__.'\PLUGIN_NAMESPACE','xdevl_theme') ;
 // Theme settings
 define(__NAMESPACE__.'\THEME_SETTINGS',PLUGIN_NAMESPACE) ;
 define(__NAMESPACE__.'\THEME_SETTINGS_LOGO_URL',PLUGIN_NAMESPACE.'_logo_url') ;
+define(__NAMESPACE__.'\THEME_SETTINGS_FAVICON_URL',PLUGIN_NAMESPACE.'_favicon_url') ;
 define(__NAMESPACE__.'\THEME_SETTINGS_ABOUT_URL',PLUGIN_NAMESPACE.'_about_url') ;
 define(__NAMESPACE__.'\THEME_SETTINGS_CONTACT_URL',PLUGIN_NAMESPACE.'_contact_url') ;
 
@@ -72,11 +73,13 @@ function admin_init()
 {
 	add_editor_style('css/editor.css') ;
 	register_setting(THEME_SETTINGS,THEME_SETTINGS_LOGO_URL) ;
+	register_setting(THEME_SETTINGS,THEME_SETTINGS_FAVICON_URL) ;
 	register_setting(THEME_SETTINGS,THEME_SETTINGS_ABOUT_URL) ;
 	register_setting(THEME_SETTINGS,THEME_SETTINGS_CONTACT_URL) ;
 	
 	add_settings_section(THEME_SETTINGS,null,null,THEME_SETTINGS) ;
 	add_settings_field(THEME_SETTINGS_LOGO_URL,'Logo url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_LOGO_URL) ;
+	add_settings_field(THEME_SETTINGS_FAVICON_URL,'Favicon url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_FAVICON_URL) ;
 	add_settings_field(THEME_SETTINGS_ABOUT_URL,'About url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_ABOUT_URL) ;
 	add_settings_field(THEME_SETTINGS_CONTACT_URL,'Contact url:', __NAMESPACE__.'\url_input_callback',THEME_SETTINGS,THEME_SETTINGS,THEME_SETTINGS_CONTACT_URL) ;
 }
