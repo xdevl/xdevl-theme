@@ -9,13 +9,19 @@
 			get_template_part('post') ; ?>
 		<?php else: ?>
 			<?php if(is_home() && !is_paged()): ?>
-				<div class="orbit-wrapper">
-					<ul data-orbit data-options="pause_on_hover: false; slide_number: false;">
+				<div class="orbit" aria-label="Featured posts" data-orbit>
+					<ul class="orbit-container">
 						<?php for($count=0;$count<2 && have_posts();++$count): ?>
-							<?php the_post() ;
-							get_template_part('post') ;?>
+							<li class="orbit-slide">
+								<?php the_post() ;
+								get_template_part('post') ;?>
+							</li>
 						<?php endfor; ?>
 					</ul>
+					<nav class="orbit-bullets">
+						<button class="is-active" data-slide="0" />
+						<button data-slide="1" />
+					</nav>
 				</div>
 			<?php  elseif(is_home() && is_paged()): ?>
 				<h1>Archives</h1>
@@ -27,11 +33,11 @@
 			<div class="post-list">
 				<?php if(!isset($count) || $count>=2): while(have_posts()): the_post(); ?>
 					<div class="post-row">
-						<div class="post-preview panel">
+						<div class="post-preview callout">
 							<?php get_template_part('post','preview'); ?>
 						</div>
 						<?php if(xdevl\theme\more_posts()): the_post(); ?>
-							<div class="post-preview panel">
+							<div class="post-preview callout">
 								<?php get_template_part('post','preview'); ?>
 							</div>
 						<?php else: ?>

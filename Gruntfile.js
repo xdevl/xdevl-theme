@@ -4,7 +4,10 @@ module.exports = function(grunt) {
 		
 		sass: {
 			options: {
-				includePaths: ['bower_components/foundation/scss']
+				includePaths: [
+					'node_modules/foundation-sites/scss',
+					'node_modules/motion-ui/src'
+				]
 			},
 			dist: {
 				options: {
@@ -34,10 +37,22 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			script: {
-				src: [	'bower_components/foundation/js/foundation/foundation.js',
-						'bower_components/foundation/js/foundation/foundation.topbar.js',
-						'bower_components/foundation/js/foundation/foundation.orbit.js',
-						'bower_components/foundation/js/foundation/foundation.reveal.js'
+				src: [	
+						'node_modules/foundation-sites/dist/foundation.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.core.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.accordionMenu.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.responsiveToggle.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.sticky.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.orbit.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.reveal.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.box.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.nest.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.mediaQuery.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.keyboard.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.motion.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.triggers.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.timerAndImageLoader.js',
+						'node_modules/foundation-sites/dist/plugins/foundation.util.touch.js'
 					],
 				dest: 'js/script.js'
 			},

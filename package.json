@@ -1,12 +1,26 @@
 {
-  "name": "xdevl",
-  "version": "0.0.1",
+  "name": "xdevl-theme",
+  "version": "1.0.0",
+  "authors": [
+	"XdevL <xdevl@users.noreply.github.com>"
+  ],
+  "description": "XdevL Wordpress blogging theme",
+  "license": "GPL-2.0",
+  "repository": {
+	  "type": "git",
+	  "url": "https://github.com/xdevl/xdevl-theme.git"
+  },
+  "dependencies": {
+	  "foundation-sites":"6.2.1",
+	  "motion-ui":"1.2.2"
+  },
   "devDependencies": {
     "node-sass": "*",
     "grunt": "*",
     "grunt-contrib-watch": "*",
     "grunt-sass": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-uglify": "*"
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-compress": "*"
   }
 }

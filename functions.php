@@ -51,7 +51,7 @@ function more_posts()
 
 function posts_link_attributes()
 {
-	return 'class="button small"' ;
+	return 'class="button"' ;
 }
 
 function wp_enqueue_scripts()

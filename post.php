@@ -1,4 +1,4 @@
-<div class="post-featured panel">
+<div class="post-featured callout">
 <?php $thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID())); ?>
 <a href="<?php the_permalink(); ?>" rel="bookmark"><img src="<?php echo $thumbnail['0']; ?>" class="wp-post-image" /></a>
 <h1 class="post-title">

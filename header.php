@@ -17,38 +17,42 @@
 	
 	<body>
 		
-		<div id="loginModal" class="titled-panel reveal-modal login-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		<!-- <div id="loginModal" class="reveal titled-panel login-modal" data-reveal>
+			<a class="close-reveal-modal" data-close aria-label="Close">&#215;</a>
 			<h2 class="title">Login</h2>
 			<div class="panel-content">
 				<?php xdevl\theme\login_form(); ?>
 			</div>
-		</div>
+		</div> -->
 		
 		<div id="wrapper">
-			<div id="header" class="sticky">
-				<nav class="top-bar" data-topbar role="navigation" data-options="scrolltop: false; sticky_on: large; mobile_show_parent_link: false">
-					<ul class="title-area">
-						<li class="name">
-							<a href="<?php echo esc_url(home_url('/')); ?>"><img id="logo" src="<?php echo xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_LOGO_URL); ?>" /></a>
-							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-						</li>
-					</ul>
-					<section class="top-bar-section">
-						<ul class="right">
+			<div id="header">
+				<div class="top-bar">
+					<div class="top-bar-left">
+						<span class="hide-for-xlarge" data-responsive-toggle="main-menu" data-hide-for="xlarge">
+							<button class="menu-icon" type="button" data-toggle></button>
+						</span>
+						<a href="<?php echo esc_url(home_url('/')); ?>"><img id="logo" src="<?php echo xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_LOGO_URL); ?>" /></a>
+					</div>
+					<div class="top-bar-right" id="main-menu" style="display:none;">
+						<ul class="vertical xlarge-horizontal menu">
 							<?php 	xdevl\theme\echo_top_bar_nav_item('Home',home_url('/')) ;
 									xdevl\theme\echo_top_bar_nav_item('About',xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_ABOUT_URL)) ;
 									xdevl\theme\echo_top_bar_nav_item('Contact',xdevl\theme\get_url_option(xdevl\theme\THEME_SETTINGS_CONTACT_URL)) ; ?>
-							<li class="has-dropdown hide-for-large-up">
-								<a href="#">Categories</a>
-								<ul class="dropdown">
-									<?php wp_list_categories(array('orderby'=>'name','style'=>'list','show_count'=>0,'hierarchical'=>false,'style'=>'list','title_li'=>'')); ?>
+							<li class="hide-for-xlarge">
+								<ul class="vertical menu" data-accordion-menu>
+									<li>
+										<a href="#">Categories</a>
+										<ul class="menu vertical nested">
+											<?php wp_list_categories(array('orderby'=>'name','style'=>'list','show_count'=>0,'hierarchical'=>false,'style'=>'list','title_li'=>'')); ?>
+										</ul>
+									</li>
 								</ul>
 							</li>
-							<li class="has-form hide-for-large-up">
+							<li class="hide-for-xlarge">
 								<?php get_search_form(); ?>
 							</li>
 						</ul>
-					</section>
-				</nav>
+					</div>
+				</div>
 			</div>
