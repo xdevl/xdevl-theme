@@ -63,6 +63,16 @@ module.exports = function(grunt) {
 					'js/script.min.js':['js/script.js']
 				}
 			}
+		},
+		compress: {
+			main: {
+				options: {
+					archive: '<%= pkg.name %>-<%= pkg.version %>.zip'
+				},
+				files: [
+					{src: ['*.php','style.css','LICENSE','css/*','js/*.min.js','img/*','fonts/*'], dest: '/'}
+				]
+			},
 		}
 	});
 	
@@ -70,8 +80,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	
 	grunt.registerTask('build', ['sass']);
 	grunt.registerTask('buildJs', ['concat','uglify']) ;
+	grunt.registerTask('package',['build','buildJs','compress']);
 	grunt.registerTask('default', ['build','buildJs','watch']);
 }

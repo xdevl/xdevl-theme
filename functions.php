@@ -60,7 +60,7 @@ function wp_enqueue_scripts()
 	wp_register_style('xdevl-style',get_template_directory_uri().'/style.css',array(),false,'all') ;
 	wp_enqueue_style('xdevl-style') ;
 	
-	wp_register_script('foundation-main',get_template_directory_uri().'/js/script.js',true) ;
+	wp_register_script('foundation-main',get_template_directory_uri().'/js/script.min.js',true) ;
 	wp_enqueue_script('jquery') ;
 	wp_enqueue_script('foundation-main') ;
 	
