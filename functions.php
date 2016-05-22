@@ -204,6 +204,11 @@ function is_comment_reply()
 	return Data::$comment_reply ;
 }
 
+function copyright_text()
+{
+	echo get_bloginfo('name').' &#64; '.date('Y').' All rights Reserved.';
+}
+
 add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
 add_action('admin_init',__NAMESPACE__.'\admin_init') ;
 add_action('admin_menu',__NAMESPACE__.'\admin_menu') ;

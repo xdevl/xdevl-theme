@@ -1,6 +1,6 @@
 			<?php wp_footer(); ?>
 			<div id="footer">
-				XdevL &#64; 2015 All rights Reserved.
+				<?php xdevl\theme\copyright_text(); ?>
 			</div>
 		</div> <!-- End wrapper -->
 		<script>
