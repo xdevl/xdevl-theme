@@ -33,6 +33,11 @@ $layout-spacing: 1rem ;
 			url('fonts/VarelaRound-Regular.ttf') format('truetype') ;
 }
 
+.success, .warning, .alert
+{
+	color: white ;
+}
+
 body
 {
 	min-height: 100% ;
@@ -286,7 +291,7 @@ input.submit, input.button-primary
 	
 	h1
 	{
-		padding: 1rem ;
+		padding-bottom: 1rem ;
 		border-bottom: 1px solid #dddddd ;
 		margin-bottom: 1rem !important ;
 	}
