@@ -206,7 +206,7 @@ function is_comment_reply()
 
 function copyright_text()
 {
-	echo get_bloginfo('name').' &#64; '.date('Y').' All rights Reserved.';
+	echo get_bloginfo('name').' &copy '.date('Y').' All rights Reserved.';
 }
 
 add_action('wp_enqueue_scripts',__NAMESPACE__.'\wp_enqueue_scripts') ;
